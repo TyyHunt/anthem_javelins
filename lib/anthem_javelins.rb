@@ -1,6 +1,2 @@
-require "anthem_javelins/version"
-
-module AnthemJavelins
- 
-  # Your code goes here...
-end
+require_relative "anthem_javelins/version"
+require_relative "./anthem_javelins/cli"

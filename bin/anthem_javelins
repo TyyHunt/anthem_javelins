@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
+require "./lib/anthem_javelins"
+
 AnthemJavelins::CLI.new.call
