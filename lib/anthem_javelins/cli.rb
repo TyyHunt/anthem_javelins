@@ -13,12 +13,7 @@ class AnthemJavelins::CLI
   
   def list_javelins
     puts "Here is a list of Anthem's current javelins"
-    puts <<-DOC
-      1. Ranger Javelin
-      2. Colossus Javelin
-      3. Storm Javelin
-      4. Interceptor Javelin
-      DOC
+    @javelins = AnthemJavelins::Javelins.current
   end
   
   def menu
