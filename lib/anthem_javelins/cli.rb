@@ -14,6 +14,10 @@ class AnthemJavelins::CLI
   def list_javelins
     puts "Here is a list of Anthem's current javelins"
     @javelins = AnthemJavelins::Javelins.current
+    @javelins.each.with_index(1) do |suit, i|
+      puts "#{i}. #{suit.name}"
+    end
+    puts " "
   end
   
   def menu
@@ -24,7 +28,14 @@ class AnthemJavelins::CLI
     input= gets.strip.downcase
       case input
       when "ranger"
-        puts "info about Ranger"
+        ranger_info = @javelins[0]
+        puts "
+        #{ranger_info.description}
+        #{ranger_info.fighting_style}
+        #{ranger_info.special_1}
+        #{ranger_info.special_2}
+        #{ranger_info.url}
+        "
       when "colossus"
         puts "info about Colossus"
       when "storm"

@@ -3,14 +3,9 @@ class AnthemJavelins::Javelins
   attr_accessor :name, :url, :description, :fighting_style, :special_1, :special_2
   
   def self.current 
-    puts <<-DOC
-      1. Ranger
-      2. Colossus
-      3. Storm
-      4. Interceptor
-      DOC
-      
+    
       self.scrape_javelins
+      
   end
   
   def self.scrape_javelins
@@ -31,10 +26,10 @@ class AnthemJavelins::Javelins
     ranger = self.new
     
     ranger.name = doc.search("h1.d2").text
-    ranger.description = doc.css("p")[0].text
-    ranger.fighting_style = doc.search("ea-details-table").text
-    ranger.special_1 = doc.css("h4")[0].text
-    ranger.special_2 = doc.css("h4")[1].text
+    ranger.description = doc.css("p")[0].text.strip
+    ranger.fighting_style = doc.search("ea-details-table").text.strip
+    ranger.special_1 = doc.css("h4")[0].text.strip
+    ranger.special_2 = doc.css("h4")[1].text.strip
     ranger.url = "https://www.ea.com/games/anthem/gameplay-features/ranger-javelin"
     ranger 
   end
@@ -83,5 +78,5 @@ class AnthemJavelins::Javelins
     interceptor.url = "https://www.ea.com/games/anthem/gameplay-features/interceptor-javelin"
     interceptor 
   end
-  
+ 
 end
