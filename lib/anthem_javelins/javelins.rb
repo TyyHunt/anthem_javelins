@@ -1,6 +1,6 @@
 class AnthemJavelins::Javelins 
   
-  attr_accessor :name, :url, :description, :fighting_style
+  attr_accessor :name, :url, :description, :fighting_style, :special_1, :special_2
   
   def self.current 
     puts <<-DOC
@@ -10,21 +10,7 @@ class AnthemJavelins::Javelins
       4. Interceptor
       DOC
       
-      jav_ranger = self.new
-      jav_ranger.name = "Ranger"
-      jav_ranger.url = "https://www.ea.com/games/anthem/gameplay-features/ranger-javelin"
-      
-      jav_colossus = self.new
-      jav_colossus.name = "Colossus"
-      jav_colossus.url = "https://www.ea.com/games/anthem/gameplay-features/colossus-javelin"
-      
-      jav_storm = self.new
-      jav_storm.name = "Storm"
-      jav_storm.url = "https://www.ea.com/games/anthem/gameplay-features/storm-javelin"
-      
-      jav_interceptor = self.new
-      jav_interceptor.name = "Interceptor"
-      jav_interceptor.url = "https://www.ea.com/games/anthem/gameplay-features/interceptor-javelin"
+      self.scrape_javelins
   end
   
   def self.scrape_javelins
@@ -34,6 +20,8 @@ class AnthemJavelins::Javelins
     javelins << self.scrape_colossus
     javelins << self.scrape_storm
     javelins << self.scrape_interceptor
+    
+    javelins
   end
   
   def self.scrape_ranger
@@ -45,6 +33,7 @@ class AnthemJavelins::Javelins
     fighting_style = doc.search("ea-details-table").text
     special_1 = doc.css("h4")[0].text
     special_2 = doc.css("h4")[1].text
+    url = "https://www.ea.com/games/anthem/gameplay-features/ranger-javelin"
     binding.pry 
   end
   
@@ -55,8 +44,9 @@ class AnthemJavelins::Javelins
     name = doc.search("h1.d2").text
     description = doc.css("p")[0].text
     fighting_style = doc.search("ea-details-table").text
-    melee = doc.css("h4")[0].text
-    ult = doc.css("h4")[1].text
+    special_1 = doc.css("h4")[0].text
+    special_2 = doc.css("h4")[1].text
+    url = "https://www.ea.com/games/anthem/gameplay-features/colossus-javelin"
     binding.pry 
   end
   
@@ -67,8 +57,9 @@ class AnthemJavelins::Javelins
     name = doc.search("h1.d2").text
     description = doc.css("p")[0].text
     fighting_style = doc.search("ea-details-table").text
-    melee = doc.css("h4")[0].text
-    ult = doc.css("h4")[1].text
+    special_1 = doc.css("h4")[0].text
+    special_2 = doc.css("h4")[1].text
+    url = "https://www.ea.com/games/anthem/gameplay-features/storm-javelin"
     binding.pry 
   end
   
@@ -79,8 +70,9 @@ class AnthemJavelins::Javelins
     name = doc.search("h1.d2").text
     description = doc.css("p")[0].text
     fighting_style = doc.search("ea-details-table").text
-    melee = doc.css("h4")[0].text
-    ult = doc.css("h4")[1].text
+    special_1 = doc.css("h4")[0].text
+    special_2 = doc.css("h4")[1].text
+    url = "https://www.ea.com/games/anthem/gameplay-features/interceptor-javelin"
     binding.pry 
   end
   
