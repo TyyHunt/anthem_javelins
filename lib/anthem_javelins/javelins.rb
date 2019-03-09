@@ -28,52 +28,60 @@ class AnthemJavelins::Javelins
     
     doc = Nokogiri::HTML(open("https://www.ea.com/games/anthem/gameplay-features/ranger-javelin"))
     
-    name = doc.search("h1.d2").text
-    description = doc.css("p")[0].text
-    fighting_style = doc.search("ea-details-table").text
-    special_1 = doc.css("h4")[0].text
-    special_2 = doc.css("h4")[1].text
-    url = "https://www.ea.com/games/anthem/gameplay-features/ranger-javelin"
-    binding.pry 
+    ranger = self.new
+    
+    ranger.name = doc.search("h1.d2").text
+    ranger.description = doc.css("p")[0].text
+    ranger.fighting_style = doc.search("ea-details-table").text
+    ranger.special_1 = doc.css("h4")[0].text
+    ranger.special_2 = doc.css("h4")[1].text
+    ranger.url = "https://www.ea.com/games/anthem/gameplay-features/ranger-javelin"
+    ranger 
   end
   
   def self.scrape_colossus
     
     doc = Nokogiri::HTML(open("https://www.ea.com/games/anthem/gameplay-features/colossus-javelin"))
     
-    name = doc.search("h1.d2").text
-    description = doc.css("p")[0].text
-    fighting_style = doc.search("ea-details-table").text
-    special_1 = doc.css("h4")[0].text
-    special_2 = doc.css("h4")[1].text
-    url = "https://www.ea.com/games/anthem/gameplay-features/colossus-javelin"
-    binding.pry 
+    colossus = self.new
+    
+    colossus.name = doc.search("h1.d2").text
+    colossus.description = doc.css("p")[0].text
+    colossus.fighting_style = doc.search("ea-details-table").text
+    colossus.special_1 = doc.css("h4")[0].text
+    colossus.special_2 = doc.css("h4")[1].text
+    colossus.url = "https://www.ea.com/games/anthem/gameplay-features/colossus-javelin"
+    colossus 
   end
   
   def self.scrape_storm
     
     doc = Nokogiri::HTML(open("https://www.ea.com/games/anthem/gameplay-features/storm-javelin"))
     
-    name = doc.search("h1.d2").text
-    description = doc.css("p")[0].text
-    fighting_style = doc.search("ea-details-table").text
-    special_1 = doc.css("h4")[0].text
-    special_2 = doc.css("h4")[1].text
-    url = "https://www.ea.com/games/anthem/gameplay-features/storm-javelin"
-    binding.pry 
+    storm = self.new
+    
+    storm.name = doc.search("h1.d2").text
+    storm.description = doc.css("p")[0].text
+    storm.fighting_style = doc.search("ea-details-table").text
+    storm.special_1 = doc.css("h4")[0].text
+    storm.special_2 = doc.css("h4")[1].text
+    storm.url = "https://www.ea.com/games/anthem/gameplay-features/storm-javelin"
+    storm 
   end
   
   def self.scrape_interceptor
     
     doc = Nokogiri::HTML(open("https://www.ea.com/games/anthem/gameplay-features/interceptor-javelin"))
     
-    name = doc.search("h1.d2").text
-    description = doc.css("p")[0].text
-    fighting_style = doc.search("ea-details-table").text
-    special_1 = doc.css("h4")[0].text
-    special_2 = doc.css("h4")[1].text
-    url = "https://www.ea.com/games/anthem/gameplay-features/interceptor-javelin"
-    binding.pry 
+    interceptor = self.new
+    
+    interceptor.name = doc.search("h1.d2").text
+    interceptor.description = doc.css("p")[0].text
+    interceptor.fighting_style = doc.search("ea-details-table").text
+    interceptor.special_1 = doc.css("h4")[0].text
+    interceptor.special_2 = doc.css("h4")[1].text
+    interceptor.url = "https://www.ea.com/games/anthem/gameplay-features/interceptor-javelin"
+    interceptor 
   end
   
 end
