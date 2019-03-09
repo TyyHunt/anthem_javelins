@@ -1,6 +1,6 @@
 class AnthemJavelins::Javelins 
   
-  attr_accessor :name, :url
+  attr_accessor :name, :url, :description, :fighting_style
   
   def self.current 
     puts <<-DOC
@@ -25,6 +25,24 @@ class AnthemJavelins::Javelins
       jav_interceptor = self.new
       jav_interceptor.name = "Interceptor"
       jav_interceptor.url = "https://www.ea.com/games/anthem/gameplay-features/interceptor-javelin"
+  end
+  
+  def self.scrape_javelins
+    javelins = []
+    
+    javelins << self.scrape_ranger
+  end
+  
+  def self.scrape_ranger
+    
+    doc = Nokogiri::HTML(open("https://www.ea.com/games/anthem/gameplay-features/ranger-javelin"))
+    
+    name = doc.search("h1.d2").text
+    description = doc.css("p")[0].text
+    fighting_style = doc.search("ea-details-table").text
+    melee = doc.css("h4")[0].text
+    ult = doc.css("h4")[1].text
+    binding.pry 
   end
   
 end
