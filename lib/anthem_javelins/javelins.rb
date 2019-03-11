@@ -55,9 +55,23 @@ class AnthemJavelins::Javelins
     
     colossus = self.new
     
+    transition_1 = doc.search("ea-details-table").text.split("\n")
+    transition_2 = transition_1.collect do |index|
+                    index.strip
+                  end
+    style_array = transition_2.reject { |i| i.empty? }
+    transition_4 = style_array.map.with_index do |string, index|
+                   if index.odd?
+                     string + "\n"
+                   else
+                     string
+                   end
+                 end
+    final = transition_4.join(",").gsub(",", " ")
+    colossus.fighting_style = style_array
+    colossus.fighting_style_pairs = final
     colossus.name = doc.search("h1.d2").text
     colossus.description = doc.css("p")[0].text
-    colossus.fighting_style = doc.search("ea-details-table").text
     colossus.special_1 = doc.css("h4")[0].text
     colossus.special_2 = doc.css("h4")[1].text
     colossus.url = "https://www.ea.com/games/anthem/gameplay-features/colossus-javelin"
@@ -70,9 +84,23 @@ class AnthemJavelins::Javelins
     
     storm = self.new
     
+    transition_1 = doc.search("ea-details-table").text.split("\n")
+    transition_2 = transition_1.collect do |index|
+                    index.strip
+                  end
+    style_array = transition_2.reject { |i| i.empty? }
+    transition_4 = style_array.map.with_index do |string, index|
+                   if index.odd?
+                     string + "\n"
+                   else
+                     string
+                   end
+                 end
+    final = transition_4.join(",").gsub(",", " ")
+    storm.fighting_style = style_array
+    storm.fighting_style_pairs = final
     storm.name = doc.search("h1.d2").text
     storm.description = doc.css("p")[0].text
-    storm.fighting_style = doc.search("ea-details-table").text
     storm.special_1 = doc.css("h4")[0].text
     storm.special_2 = doc.css("h4")[1].text
     storm.url = "https://www.ea.com/games/anthem/gameplay-features/storm-javelin"
@@ -85,9 +113,23 @@ class AnthemJavelins::Javelins
     
     interceptor = self.new
     
+    transition_1 = doc.search("ea-details-table").text.split("\n")
+    transition_2 = transition_1.collect do |index|
+                    index.strip
+                  end
+    style_array = transition_2.reject { |i| i.empty? }
+    transition_4 = style_array.map.with_index do |string, index|
+                   if index.odd?
+                     string + "\n"
+                   else
+                     string
+                   end
+                 end
+    final = transition_4.join(",").gsub(",", " ")
+    interceptor.fighting_style = style_array
+    interceptor.fighting_style_pairs = final
     interceptor.name = doc.search("h1.d2").text
     interceptor.description = doc.css("p")[0].text
-    interceptor.fighting_style = doc.search("ea-details-table").text
     interceptor.special_1 = doc.css("h4")[0].text
     interceptor.special_2 = doc.css("h4")[1].text
     interceptor.url = "https://www.ea.com/games/anthem/gameplay-features/interceptor-javelin"
