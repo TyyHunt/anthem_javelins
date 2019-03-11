@@ -29,13 +29,12 @@ class AnthemJavelins::CLI
       case input
       when "ranger"
         ranger_info = @javelins[0]
-        puts "
-        #{ranger_info.description}
-        #{ranger_info.fighting_style}
-        #{ranger_info.special_1}
-        #{ranger_info.special_2}
-        #{ranger_info.url}
-        "
+        puts "#{ranger_info.description}"
+        puts "#{ranger_info.fighting_style_pairs}"
+        puts "Speceial Ability - #{ranger_info.special_1}"
+        puts "Speceial Ability - #{ranger_info.special_2}"
+        puts "#{ranger_info.url}"
+        puts " "
       when "colossus"
         puts "info about Colossus"
       when "storm"
