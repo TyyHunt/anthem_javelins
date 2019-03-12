@@ -1,10 +1,6 @@
-Ready to create my first gem
+# Anthem Javelins
 
-# AnthemJavelins
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/anthem_javelins`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a gem to help those who are interested in playing EA's newest AAA title, Anthem.  In this gem the current javelins will be listed for you and you will have the opportunity to request more details about each javelin.
 
 ## Installation
 
@@ -24,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the on screen prompts.
+
+$ worlds-best-restaurants
 
 ## Development
 
