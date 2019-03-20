@@ -2,6 +2,11 @@
   
   attr_accessor :name, :url, :description, :fighting_style, :fighting_style_pairs, :special_1, :special_2
   
+  
+  
+  
+  
+  
   def self.current 
     
       self.scrape_javelins

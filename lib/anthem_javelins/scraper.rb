@@ -5,7 +5,7 @@ class AnthemJavelins::Scraper
   end
   
   def scrape_javelins_index
-    self.page_scraper.css("h3")[1..4].text
+    self.page_scraper.css("ea-container ea-tile")[1..4]
   end
   
   def create_javelins
