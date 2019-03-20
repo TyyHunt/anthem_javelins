@@ -12,5 +12,6 @@ class AnthemJavelins::Scraper
     scrape_javelins_index do |jav|
       AnthemJavelins::Javelins.new_from_index_page(jav)
     end
+  end
     
 end
