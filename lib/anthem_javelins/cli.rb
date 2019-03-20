@@ -1,82 +1,66 @@
 class AnthemJavelins::CLI 
   
   def call
-    greeting
-    list_javelins
-    menu
-    close
+    AnthemJavelins::Scraper.new.create_javelins
+    puts "Greetings freelancers!"
+    run_program
   end
   
-  def greeting
-    puts "Greetings freelancers, want to know more about Anthem's javelins?"
+  def run_program
+    puts "Here is a list of the current javelins from Anthem"
+    list_javelins
+    puts ""
+    more_info
   end
   
   def list_javelins
-    puts "Here is a list of Anthem's current javelins"
-    @javelins = AnthemJavelins::Javelins.current
-    @javelins.each.with_index(1) do |suit, i|
-      puts "#{i}. #{suit.name}"
+    AnthemJavelins::Javelins.all.each.with_index(1) do |javelin, index|
+      puts "#{index}. #{javelin.name}"
     end
-    puts " "
   end
   
-  def menu
+  def more_info
     input = nil
-    while input != "exit"
-    puts "If you would like more info, type the javelin name or 'exit'"
-    puts "to see the list again type 'list'"
-    input= gets.strip.downcase
-      case input
-      when "ranger"
-        puts "\n"
-        ranger_info = @javelins[0]
-        puts "#{ranger_info.description}"
-        puts "#{ranger_info.fighting_style_pairs}"
-        puts "Speceial Ability - #{ranger_info.special_1}"
-        puts "Speceial Ability - #{ranger_info.special_2}"
-        puts "#{ranger_info.url}"
-        puts "\n"
-        
-      when "colossus"
-        puts "\n"
-        colossus_info = @javelins[1]
-        puts "#{colossus_info.description}"
-        puts "#{colossus_info.fighting_style_pairs}"
-        puts "Speceial Ability - #{colossus_info.special_1}"
-        puts "Speceial Ability - #{colossus_info.special_2}"
-        puts "#{colossus_info.url}"
-        puts "\n"
-        
-      when "storm"
-        puts "\n"
-        storm_info = @javelins[2]
-        puts "#{storm_info.description}"
-        puts "#{storm_info.fighting_style_pairs}"
-        puts "Speceial Ability - #{storm_info.special_1}"
-        puts "Speceial Ability - #{storm_info.special_2}"
-        puts "#{storm_info.url}"
-        puts "\n"
-        
-      when "interceptor"
-        puts "\n"
-         interceptor_info = @javelins[3]
-        puts "#{interceptor_info.description}"
-        puts "#{interceptor_info.fighting_style_pairs}"
-        puts "Speceial Ability - #{interceptor_info.special_1}"
-        puts "Speceial Ability - #{interceptor_info.special_2}"
-        puts "#{interceptor_info.url}"
-        puts "\n"
-        
-      when "list"
+    puts "If you would like more info, input the number of the corresponding javelin."
+    input= gets.strip
+    
+    current_javelin = AnthemJavelins::Javelins.find(input.to_i)
+    
+    javelin_specs(current_javelin)
+    
+    puts ""
+    puts "Would you like information on another javelin? Enter Y or N"
+
+    input = gets.strip.downcase
+    if input == "y"
+      more_info
+    elsif input == "n"
+      puts ""
+      puts "Good hunting, and Godsspeed"
+      exit
+      elsif input == "list"
         list_javelins
-      else
-        puts "sorry that is not a valid input \n"
-      end
+    else
+      puts ""
+      puts "Sorry, that is not a valid input."
+      more_info
     end
   end
+
   
-  def close 
-    puts "Good hunting, and Godsspeed"
+  def javelin_specs(num)
+    puts ""
+    puts "------------#{num.name}-------------"
+    puts "#{num.description}"
+    puts ""
+    puts "Special Ability 1:      #{num.special_move_1}"
+    puts "Special Ability 2:      #{num.special_move_2}"
+    puts "Javelin Fighting Style:"
+    puts "----------------------"
+    puts "#{num.fighting_style}"
+    puts "----------------------"
+    puts "Website:  #{num.url}"
+
   end
   
 end
