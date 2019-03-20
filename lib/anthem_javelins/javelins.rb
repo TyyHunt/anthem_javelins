@@ -1,4 +1,4 @@
-class AnthemJavelins::Javelins 
+ class AnthemJavelins::Javelins 
   
   attr_accessor :name, :url, :description, :fighting_style, :fighting_style_pairs, :special_1, :special_2
   
