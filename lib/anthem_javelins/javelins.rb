@@ -2,7 +2,20 @@
   
   attr_accessor :name, :url, :description, :fighting_style, :fighting_style_pairs, :special_1, :special_2
   
+  @@javelins = []
   
+  def initialize(name, url)
+    @name = name
+    @url = url
+    @@javelins << self
+  end
+  
+  def new_from_index_page(jav)
+    self.new(
+      jav.css("h3").text,
+      "https://www.ea.com#{jav.css("a").attribute("href").text}"
+      )
+  end
   
   
   
