@@ -9,7 +9,7 @@ class AnthemJavelins::Scraper
   end
   
   def create_javelins
-    scrape_javelins_index do |jav|
+    scrape_javelins_index.each do |jav|
       AnthemJavelins::Javelins.new_from_index_page(jav)
     end
   end

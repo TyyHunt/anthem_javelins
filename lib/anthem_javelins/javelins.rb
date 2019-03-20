@@ -17,7 +17,43 @@
       )
   end
   
+  def self.javelins
+    @@javelins
+  end
   
+  def fighting_style
+    transition_1 = doc.search("ea-details-table").text.split("\n")
+    transition_2 = transition_1.collect do |index|
+                    index.strip
+                  end
+    style_array = transition_2.reject { |i| i.empty? }
+    transition_4 = style_array.map.with_index do |string, index|
+                   if index.odd?
+                     string + "\n"
+                   else
+                     string
+                   end
+                 end
+    final = transition_4.join(",").gsub(",", " ")
+    @fighting_style ||= style_array
+    @fighting_style_pairs ||= final
+  end
+  
+  def description
+    @description ||= doc.css("p")[0].text.strip
+  end
+  
+  def special_move_1
+  @special_move_1 ||= doc.css("h4")[0].text.strip
+  end
+  
+  def special_move_2
+  @special_move_2 = doc.css("h4")[1].text.strip
+  end
+  
+  def doc
+    @doc ||= Nokogiri::HTML(open(self.url))
+  end
   
   
   def self.current 
