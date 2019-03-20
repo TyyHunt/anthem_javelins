@@ -53,7 +53,7 @@
   end
   
   def special_move_2
-  @special_move_2 = doc.css("h4")[1].text.strip
+  @special_move_2 ||= doc.css("h4")[1].text.strip
   end
   
   def doc

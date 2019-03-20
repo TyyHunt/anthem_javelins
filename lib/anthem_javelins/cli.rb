@@ -33,13 +33,12 @@ class AnthemJavelins::CLI
 
     input = gets.strip.downcase
     if input == "y"
+      list_javelins
       more_info
     elsif input == "n"
       puts ""
       puts "Good hunting, and Godsspeed"
       exit
-      elsif input == "list"
-        list_javelins
     else
       puts ""
       puts "Sorry, that is not a valid input."
