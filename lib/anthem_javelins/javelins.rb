@@ -4,6 +4,11 @@
   
   @@all = []
   
+  def initialize(name=nil, url=nil)
+    @name = name
+    @url = url
+    @@all << self
+  end
   
   def self.new_from_index_page(item)
     self.new(
@@ -12,15 +17,17 @@
       )
   end
   
-  def initialize(name=nil, url=nil)
-    @name = name
-    @url = url
-    @@all << self
-  end
-  
   def self.all
     @@all
   end
+  
+  def my_method 
+   puts "hello"
+   return "beans"
+   puts "hlello again"
+   "potatoes"
+  end
+  
   
    def self.find(id)
     self.all[id-1]

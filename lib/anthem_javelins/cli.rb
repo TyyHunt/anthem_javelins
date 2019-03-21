@@ -20,9 +20,13 @@ class AnthemJavelins::CLI
   end
   
   def more_info
-    input = nil
     puts "If you would like more info, input the number of the corresponding javelin."
     input= gets.strip
+      
+      if !(1..4).include?(input.to_i) 
+        puts "Sorry, this is not a valid input."
+        more_info
+      end
     
     current_javelin = AnthemJavelins::Javelins.find(input.to_i)
     
@@ -47,18 +51,17 @@ class AnthemJavelins::CLI
   end
 
   
-  def javelin_specs(num)
+  def javelin_specs(javelin)
     puts ""
-    puts "------------#{num.name}-------------"
-    puts "#{num.description}"
-    puts ""
-    puts "Special Ability 1:      #{num.special_move_1}"
-    puts "Special Ability 2:      #{num.special_move_2}"
+    puts "------------#{javelin.name}-------------"
+    puts "#{javelin.description}"
+    puts "Special Ability 1:      #{javelin.special_move_1}"
+    puts "Special Ability 2:      #{javelin.special_move_2}"
     puts "Javelin Fighting Style:"
     puts "----------------------"
-    puts "#{num.fighting_style}"
+    puts "#{javelin.fighting_style}"
     puts "----------------------"
-    puts "Website:  #{num.url}"
+    puts "Website:  #{javelin.url}"
 
   end
   
